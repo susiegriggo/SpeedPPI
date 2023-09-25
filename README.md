@@ -1,20 +1,21 @@
 # Changes 
 
-Understanding how pipeline works. Need to have a fasta file of sequences of interest and a text file with their names. 
+Understanding how pipeline works. Recording changes as required by the original license. 
+Pipeline requires a fasta file of sequences of interest and a text file with their names. 
 
-Step 1: Can be done locally
+*Step 1:* Can be done locally
 bash create_ppi_all_vs_all_step1.sh ./data/dev/test.fasta hh-suite/build/bin/hhblits 0.5 ./data/dev/all_vs_all/
 
-Step 2: Submit to cluster
+*Step 2:* Submit to cluster
 sbatch hhblits_parallel_step2.sh ids.txt  ./data/dev/all_vs_all/  ./data/dev/all_vs_all/fasta/  ./data/uniclust30_2018_08/uniclust30_2018_08 0
 
-Step 3: Submit to cluster
+*Step 3:* Submit to cluster
 sbatch alphafold_all_vs_all_parallel_step3.sh ids.txt  data/dev/all_vs_all/  data/dev/all_vs_all/fasta/  data/  0
 
-Step 4: Can be done locally
+*Step 4:* Can be done locally
 python src/build_ppi.py --pred_dir data/dev/all_vs_all/ --pdockq_t 0.5 --outdir  data/dev/all_vs_all/
 
-
+files *step*.sh have been generated from the create_ppi_all_vs_all.sh in the original pipeline so that I can run each step separately either locally or on a cluster. 
 
 
 # SpeedPPI
