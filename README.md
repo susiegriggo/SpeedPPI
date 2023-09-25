@@ -1,3 +1,22 @@
+# Changes 
+
+Understanding how pipeline works. Need to have a fasta file of sequences of interest and a text file with their names. 
+
+Step 1: Can be done locally
+bash create_ppi_all_vs_all_step1.sh ./data/dev/test.fasta hh-suite/build/bin/hhblits 0.5 ./data/dev/all_vs_all/
+
+Step 2: Submit to cluster
+sbatch hhblits_parallel_step2.sh ids.txt  ./data/dev/all_vs_all/  ./data/dev/all_vs_all/fasta/  ./data/uniclust30_2018_08/uniclust30_2018_08 0
+
+Step 3: Submit to cluster
+sbatch alphafold_all_vs_all_parallel_step3.sh ids.txt  data/dev/all_vs_all/  data/dev/all_vs_all/fasta/  data/  0
+
+Step 4: Can be done locally
+python src/build_ppi.py --pred_dir data/dev/all_vs_all/ --pdockq_t 0.5 --outdir  data/dev/all_vs_all/
+
+
+
+
 # SpeedPPI
 
 This repository contains code for predicting a pairwise protein-protein interaction network from a set of protein sequences or two lists of sequences thought to interact.
