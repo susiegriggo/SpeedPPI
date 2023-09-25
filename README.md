@@ -4,7 +4,7 @@ Understanding how pipeline works. Recording changes as required by the original 
 Pipeline requires a fasta file of sequences of interest and a text file with their names. 
 
 *Step 1:* Can be done locally
-bash create_ppi_all_vs_all_step1.sh ./data/dev/test.fasta hh-suite/build/bin/hhblits 0.5 ./data/dev/all_vs_all/
+bash create_ppi_all_vs_all_step1.sh sequences.fasta output_dir
 
 *Step 2:* Submit to cluster
 sbatch hhblits_parallel_step2.sh ids.txt  ./data/dev/all_vs_all/  ./data/dev/all_vs_all/fasta/  ./data/uniclust30_2018_08/uniclust30_2018_08 0

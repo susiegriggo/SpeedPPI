@@ -3,9 +3,7 @@
 #ARGS
 #INPUT
 FASTA_SEQS=$1 #All fasta seqs
-HHBLITS=$2 #Path to HHblits
-PDOCKQ_T=$3
-OUTDIR=$4
+OUTDIR=$2
 #DEFAULT
 UNICLUST=./data/uniclust30_2018_08/uniclust30_2018_08 #Assume path according to setup
 
