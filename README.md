@@ -7,7 +7,16 @@ Pipeline requires a fasta file of sequences of interest and a text file with the
 bash create_ppi_all_vs_all_step1.sh sequences.fasta output_dir
 
 *Step 2:* Submit to cluster
+__Slurm__
 sbatch hhblits_parallel_step2.sh ids.txt  ./data/dev/all_vs_all/  ./data/dev/all_vs_all/fasta/  ./data/uniclust30_2018_08/uniclust30_2018_08 0
+
+* Make sure script is updated with the number of sequences which need processing 
+
+__PBS__ 
+
+qsub -v IDS=ids.txt,OUTDIR=./data/dev/all_vs_all/,FASTADIR=./data/dev/all_vs_all/fasta/,UNICLUST=data/uniclust30_2018_08/uniclust30_2018_08  hhblits_parallel_step2_pbs.sh
+
+* Will submit as a bunch of other scripts using the hhblits_single_step2.sh script 
 
 *Step 3:* Submit to cluster
 sbatch alphafold_all_vs_all_parallel_step3.sh ids.txt  data/dev/all_vs_all/  data/dev/all_vs_all/fasta/  data/  0
